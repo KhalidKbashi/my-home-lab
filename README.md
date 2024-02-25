@@ -2,7 +2,7 @@
 
 **Introduction**
 
-This document provides a comprehensive guide on setting up a home network using VMware Workstation. It is intended for students and pen-testers who are looking to create a virtualized and layered network environment for testing, development, or educational purposes.
+This document provides a comprehensive guide on setting up a home lab enviroument using VMware Workstation. It is intended for students and pen-testers who are looking to create a virtualized and layered network environment for testing, development, or educational purposes.
 
 **System Requirements**
 
@@ -11,22 +11,22 @@ Before proceeding, ensure your system meets the following minimum requirements:
 - RAM: 8GB minimum (16GB recommended)
 - Storage: 256GB SSD or larger
 - Operating System: Windows 10 or later / Linux distribution with GUI
-- VMware Workstation Pro or Player installed ( you can but it get the “Academic Users” version from their website
 
 **Tools**
 
-1. Attacker – Kali Linux OS.
-2. Firewall – pfSense.
-3. Hypervisor – VMWare Workstation Pro.
+1. Attacker Machine - I'll use Kali Linux OS.
+2. Firewall - I'll use pfSense.
+3. Hypervisor.
 4. Vulnerable Machines:
 	* Ubuntu (Damn Vulnerable Web Application or DVWA).
 	* Windows XP.
 	* OWASP Broken Web Apps.
 	* Metasploitable.
-
+ 
 **Network Design**
 
-Since we’ll be using this architecture for Pen-Testing Purposes we want to practice for both layered architecture and flat architecture, and we’ll do this later by adding at least two interface card for each machine but don’t worry we will do that later.
+Since I’ll be using this architecture for Pen-Testing purposes i  want to practice on both multi-layered architecture and flat architecture, the multi-layered architecture is helpful when simulating nearly-real attacks on networks that contains network components like **Firewalls, Routers, etc**, flat architecture can be used to prevent any packet leakage possible and performing first round of testing.
+I’ll do this later by adding at least two interface card for each machine but don’t worry we will do that later.
 
 1.Multi-Layer Network Architecture:
 
@@ -40,7 +40,8 @@ Now let’s get started
 
 **Installation of The Hypervisor**
 
-NOTE: I'll be using VMWare Workstation Pro cause it’s more flexible when dealing with multi-layered networks but you can use other free Hypervisor Like Virtualbox or Microsoft Hyper-V .. etc or you can get trial version of VMWare Workstation Pro from here: [Download VMware Workstation Pro](https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html).
+NOTE: I'll be using VMWare Workstation Pro cause it’s more flexible when dealing with multi-layered networks but you can use any other free Hypervisor Like Virtualbox, Microsoft Hyper-V, etc.
+you can also get trial version of VMWare Workstation Pro from here: [Download VMware Workstation Pro](https://www.vmware.com/products/workstation-pro/workstation-pro-evaluation.html).
 
 **Creating a Virtual Machine (VM)**
 
@@ -62,7 +63,7 @@ NOTE: I'll be using VMWare Workstation Pro cause it’s more flexible when deali
 
 **Setting Up a Virtual Network**
 
-NOTE: to make our multi-layered network architecture we’ll need configure 2 Virtual Network we will name it as VMnet1 for 192.168.10.0/24 subnet and VMnet2 for 192.168.20.0, we will also use the pre-configured NAT subnet which is 192.168.80.0/24.
+NOTE: to make our multi-layered network architecture we’ll need configure 2 Virtual Network we will name it as VMnet1 for 192.168.10.0/24 subnet and VMnet2 for 192.168.20.0/24 subnet, we will also use the pre-configured NAT subnet which is 192.168.80.0/24.
 
 1. Go to **Edit > Virtual Network Editor**.
 
@@ -107,26 +108,26 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 
 **Setting Up Firewall**
 
-1. **Create a new Virtual Machine using the** **Creating a Virtual Machine (VM)** **section discussed earlier using the ISO image downloaded from resources links.**
-	- **We can give it 1GB for RAM and 1 processor for CPU and based on Network Diagram showed earlier it should only have 1 network cards which is** **NAT**
-2. **Wait till pfSense installer show up.**
-3. **Press Install, and select all the default configurations.**
-
+1. Create a new Virtual Machine using the Creating a Virtual Machine (VM) section discussed earlier using the ISO image downloaded from resources links.
+	- We can give it **1GB for RAM** and **1 processor for CPU** and based on Network Diagram showed earlier **it should only have 1 network cards which is NAT**
+2. Wait till pfSense installer show up.
+3. Press **Install**, and select **all the default configurations**.
+   
 ![Screenshot](Pictures/clip_image015.png)
 
-5. **Wait till pfSense reboots.**
-6. **Select 2 to set the IP Addresses**
+4. Wait till pfSense reboots.
+5. Select **2** to set the IP Addresses
 
 ![Screenshot](Pictures/clip_image017.png)
 
-8. Enter 1 to select the interface card we’re going to configure WAN interface.
-9. Enter no for setting up IPv4 via DHCP
-10. Enter IP Address 192.168.80.1 then enter 24 for the subnet mask we will use.
-
+6. **Enter 1** to select the interface card we’re going to configure WAN interface.
+7. **Enter no** for setting up IPv4 via DHCP
+8. **Enter IP Address 192.168.80.1** then **enter 24** for the subnet mask we will use.
+   
 ![Screenshot](Pictures/clip_image019.png)
 
-12. Press enter and enter no the press another enter and enter no cause we won’t need webConfigurator protocol.
-
+9. **Press enter** and **enter no** the **press another enter** and **enter no cause** we won’t need webConfigurator protocol.
+    
 ![Screenshot](Pictures/clip_image021.png)
 
 10. Wait till it apply and save new settings.
@@ -134,41 +135,41 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 
 **Setting Up Kali**
 
-**1.** **Create a new Virtual Machine using the** **Creating a Virtual Machine (VM)** **section discussed earlier using the ISO image downloaded from resources links.**
-**2.** **Boot into operating system.**
-**3.** **Username is kali and password is also kali.**
-**4.** **Open terminal and enter command “sudo apt-get update && apt-get upgrade” to install updates**
-**5.** **Now, Kali is ready to use.**
+1. Create a new Virtual Machine using the Creating a Virtual Machine (VM) section discussed earlier using the ISO image downloaded from resources links.
+2. Boot into operating system.
+3. Username is **kali** and password is also **kali**.
+4. Open terminal and enter command “**sudo apt-get update && apt-get upgrade**” to install updates
+5. Now, Kali is ready to use.
 
 **Setting Up Metasploitable**
 
-1. Create a new Virtual Machine using the** **Creating a Virtual Machine (VM)** **section discussed earlier using the ISO image downloaded from resources links.**
-2. **Boot into operating system.**
-3. **Username is msfadmin and password is also msfadmin.**
-4. **Now, Metasploitable is ready to use.**
+1. Create a new Virtual Machine using the Creating a Virtual Machine (VM) section discussed earlier using the ISO image downloaded from resources links.
+2. Boot into operating system.
+3. Username is **msfadmin** and password is also **msfadmin**.
+4. Now, Metasploitable is ready to use.
 
 **Setting Up OWASP Web Broken Apps**
 
-1. **Create a new Virtual Machine using the** **Creating a Virtual Machine (VM)** **section discussed earlier using the ISO image downloaded from resources links.**
-2. **Boot into operating system.**
-3. **Username is root and password is owaspbwa.**
-4. **Now, OWASP Web Broken Apps is ready to use.**
-
+1. Create a new Virtual Machine using the Creating a Virtual Machine (VM) section discussed earlier using the ISO image downloaded from resources links.
+2. Boot into operating system.
+3. Username is **root** and password is **owaspbwa**.
+4. Now, OWASP Web Broken Apps is ready to use.
+   
 **Setting Up Ubuntu**
 
-1. **Create a new Virtual Machine using the** **Creating a Virtual Machine (VM)** **section discussed earlier using the ISO image downloaded from resources links.**
-2. **Select your keyboard layout.**
-3. **Select normal installation, click** **Continue***.
-4. **Select erase disk, click install now.**
-
+1. Create a new Virtual Machine using the Creating a Virtual Machine (VM) section discussed earlier using the ISO image downloaded from resources links.
+2. **Select your keyboard layout**.
+3. Select **normal installation**, click **Continue**.
+4. Select **erase disk**, click **install now**.
+   
 ![Screenshot](Pictures/clip_image023.jpg)
 
-6. **Confirm the installation by clicking** **Continue****.
-7. **Select your location on the map.**
-8. **Configure your user.**
-
+5. Confirm the installation by clicking **Continue**.
+6. **Select your location on the map**.
+7. **Configure your user**.
+   
 ![Screenshot](Pictures/clip_image025.jpg)
 
-10.  **Wait till system installs and restarts.**
-11. **Boot into operating system.**
-12. **Now, Ubuntu is ready to use.**
+8. Wait till system installs and restarts.
+9. Boot into operating system.
+10. Now, Ubuntu is ready to use.
