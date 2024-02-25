@@ -175,10 +175,11 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 12. Download the script using this command "wget https://raw.githubusercontent.com/IamCarron/DVWA-Script/main/Install-DVWA.sh"
 13. Navigate to directory that contains the script and run this command to make the script executable "chmod +x ./Install-DVWA.sh"
 14. Run the script as root "sudo ./Install-DVWA.sh"
-15. Enter username and password for SQL database
-16. To Verify Installation open browser and enter URL http://127.0.0.1/DVWA
-17. Enter username admin and password password
-18. Now, Ubuntu is ready to use.
+15. Enter user and password for SQL database
+![Screenshot](Pictures/Screenshot 2024-02-25 175610.png)
+17. To Verify Installation open browser and enter URL http://127.0.0.1/DVWA
+18. Enter username admin and password password (default username is root)
+19. Now, Ubuntu is ready to use.
 
 
 
