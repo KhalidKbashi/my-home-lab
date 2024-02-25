@@ -1,5 +1,3 @@
-**Home Pen-Testing Lab with VMware Workstation Documentation**
-
 **Introduction**
 
 This document provides a comprehensive guide on setting up a home lab environment using VMware Workstation. It is intended for students and pen-testers who are looking to create a virtualized and layered network environment for testing, development, or educational purposes.
