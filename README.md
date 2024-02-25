@@ -2,7 +2,7 @@
 
 **Introduction**
 
-This document provides a comprehensive guide on setting up a home lab enviroument using VMware Workstation. It is intended for students and pen-testers who are looking to create a virtualized and layered network environment for testing, development, or educational purposes.
+This document provides a comprehensive guide on setting up a home lab environment using VMware Workstation. It is intended for students and pen-testers who are looking to create a virtualized and layered network environment for testing, development, or educational purposes.
 
 **System Requirements**
 
@@ -181,6 +181,7 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 16. To Verify Installation open browser and enter URL http://127.0.0.1/DVWA
 17. Enter username admin and password password
 18. Now, Ubuntu is ready to use.
+
 
 
 **What's Next**
