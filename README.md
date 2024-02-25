@@ -50,16 +50,16 @@ you can also get trial version of VMWare Workstation Pro from here: [Download VM
 
 ![Screenshot](Pictures/clip_image005.png)
 
-4. Select **Typical** for easy configuration since we won’t use advance Options, then click **Next**.
+3. Select **Typical** for easy configuration since we won’t use advance Options, then click **Next**.
 
 ![Screenshot](Pictures/clip_image006.png)
 
-6. Choose **Installer Disc Image file** and click on **Browse** to select the ISO image.
+4. Choose **Installer Disc Image file** and click on **Browse** to select the ISO image.
 
 ![Screenshot](Pictures/clip_image007.png)
 
-8. Follow the wizard to select the operating system, allocate resources (CPU, memory, disk space), and customize hardware settings.
-9. Once the VM is created, power it on and wait till installer starts.
+5. Follow the wizard to select the operating system, allocate resources (CPU, memory, disk space), and customize hardware settings.
+6. Once the VM is created, power it on and wait till installer starts.
 
 **Setting Up a Virtual Network**
 
@@ -69,19 +69,19 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 
 ![Screenshot](Pictures/clip_image008.png)
 
-3. Click on **Change Settings** which may ask for administrator privileges, Click yes.
-4. Click on **Add Network** and Select  **VMnet1** for our first subnet, Click **OK**.
-5. Configure the network type:
+2. Click on **Change Settings** which may ask for administrator privileges, Click yes.
+3. Click on **Add Network** and Select  **VMnet1** for our first subnet, Click **OK**.
+4. Configure the network type:
 	- Bridged: VMs will appear as separate devices on your physical network.
 	- NAT: VMs will share the host's IP address but remain isolated from the physical network.
 	- Host-only: VMs can only communicate with the host and other VMs within the same network.
 
-6. Assign a **subnet IP** and **subnet mask** as follows.
+5. Assign a **subnet IP** and **subnet mask** as follows.
 
 ![Screenshot](Pictures/clip_image009.png)
 	* Since we will assign static IP Address for each machine we won’t tic the second option “use local DHCP service …”.
-1. Repeat steps from 3 to 5 for VMnet2 with Subnet IP 192.168.20.0 and same subnet mask.
-2. Apply the changes and close the Virtual Network Editor.
+6. Repeat steps from 3 to 5 for VMnet2 with Subnet IP 192.168.20.0 and same subnet mask.
+7. Apply the changes and close the Virtual Network Editor.
 
 **Configuring Network Settings in VMs**
 
@@ -89,16 +89,16 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 
 ![Screenshot](Pictures/clip_image010.png)
 
-3. From the bottom of the panel click on **Add** and then Select **Network Adapter** and click **Finish**.
+2. From the bottom of the panel click on **Add** and then Select **Network Adapter** and click **Finish**.
 
 ![Screenshot](Pictures/clip_image012.png)
 
-5. Choose the network Adapter you’ve just added and select Custom.
-6. Select the Virtual Network that corresponds to the virtual network architecture set up discussed earlier.
+3. Choose the network Adapter you’ve just added and select Custom.
+4. Select the Virtual Network that corresponds to the virtual network architecture set up discussed earlier.
 
 ![Screenshot](Pictures/clip_image013.png)
 
-8. Click **OK** to Save the settings and restart the VM if needed.
+5. Click **OK** to Save the settings and restart the VM if needed.
 
 **Testing the Network Configuration**
 
@@ -173,3 +173,16 @@ NOTE: to make our multi-layered network architecture we’ll need configure 2 Vi
 8. Wait till system installs and restarts.
 9. Boot into operating system.
 10. Now, Ubuntu is ready to use.
+11. To install Damn Vulnerable Web Application i'll use script written by [IamCarron (github.com)](https://github.com/iamCarron/)
+12. Download the script using this command "wget https://raw.githubusercontent.com/IamCarron/DVWA-Script/main/Install-DVWA.sh"
+13. Navigate to directory that contains the script and run this command to make the script executable "chmod +x ./Install-DVWA.sh"
+14. Run the script as root "sudo ./Install-DVWA.sh"
+15. Enter username and password for SQL database
+16. To Verify Installation open browser and enter URL http://127.0.0.1/DVWA
+17. Enter username admin and password password
+18. Now, Ubuntu is ready to use.
+
+
+**What's Next**
+1. Adding Custom Router using Dynamips.
+2. Adding Security Onion as IDS.
